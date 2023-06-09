@@ -1,2 +1,2 @@
 #ignorar arquivo da credencial
-client_secrets.json
+*.json
