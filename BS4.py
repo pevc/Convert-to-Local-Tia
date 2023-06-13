@@ -2,7 +2,8 @@ import os
 import re
 #import Baixar_Videos
 from bs4 import BeautifulSoup
-
+import requests
+from pytube import YouTube
 i = 0
 point_local = "pointlocal\pointlocal.html"
 
@@ -59,8 +60,43 @@ def convert_drive_videos(tag_video,file_path) :
     with open(file_path, 'w') as file:
         file.write(soup.pretiffy())
 
-def convert_youtube_videos(tag_video,file_path) :
-    tag_video_str = str(tag_video)
+pasta_destino = "Videos_Local"
+def download_youtube_video_from_tag(tag_string, pasta_destino):
+    # Encontra o link do YouTube na tag usando expressões regulares
+    match = re.search(r'(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)', tag_string)
+    if not match:
+        print("Nenhum link do YouTube encontrado na tag.")
+        return
+
+    youtube_id = match.group(1)
+    youtube_url = f"https://www.youtube.com/watch?v={youtube_id}"
+
+    try:
+        # Obtém informações do vídeo, incluindo o título
+        video = YouTube(youtube_url)
+        titulo = video.title
+
+        # Verifica se a pasta de destino existe, caso contrário, cria-a
+        if not os.path.exists(pasta_destino):
+            os.makedirs(pasta_destino)
+
+        # Define o caminho completo para o arquivo de destino
+        caminho_arquivo = os.path.join(pasta_destino, f"{titulo}.mp4")
+
+        # Faz o download do vídeo usando a URL do YouTube
+        video.streams.get_highest_resolution().download(output_path=pasta_destino, filename=f"{titulo}.mp4")
+        print("Download concluído.")
+        return f"{titulo}.mp4"
+
+    except Exception as e:
+        print("Erro ao fazer o download do vídeo:", str(e))
+
+
+def convert_youtube_videos(tag_video,file_name) :
+    tag_string = str(tag_video)
+    print(file_name)
+    video_downloaded = download_youtube_video_from_tag(tag_string, pasta_destino)
+    return video_downloaded
 
 folder_path = "DRAFT"     
 # Procurando todos os diretorios
@@ -91,7 +127,7 @@ for file_name in os.listdir(folder_path):
                 #tag_video.div.parent.replace_with(str(point_local_data))
                 tag_video.div.parent.replace_with(BeautifulSoup(point_local_data, "html.parser").div)
                 # Salva o HTML modificado de volta no arquivo
-                with open(file_path, 'w') as file:
-                    file.write(soup.prettify())
+                #with open(file_path, 'w') as file:
+                    #file.write(soup.prettify())
             if tag_video_str != "[]" and "youtube" in tag_video_str :
-                convert_youtube_videos(tag_video,file_path)
+                video_downloaded = convert_youtube_videos(tag_video,file_name)
