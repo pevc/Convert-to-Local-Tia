@@ -28,5 +28,4 @@ id_pasta_google_drive = "1ML6qZBQPoUZTrBWaEhx8kkAS_bz_3zhc"
 pasta_destino = "Videos_Local"
 
 # Baixar todos os arquivos MP4 da pasta no Google Drive
-def Baixar_arquivos_drive(id_pasta_google_drive, pasta_destino) :
-    baixar_arquivos_mp4(id_pasta_google_drive, pasta_destino)
+baixar_arquivos_mp4(id_pasta_google_drive, pasta_destino)
