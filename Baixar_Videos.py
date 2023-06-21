@@ -15,6 +15,11 @@ def baixar_arquivos_mp4(id_pasta, caminho_destino):
     # Lista os arquivos na pasta do Google Drive
     arquivos = drive.ListFile({'q': f"'{id_pasta}' in parents and trashed=false"}).GetList()
 
+    # Verifica se a pasta de destino existe, caso contrário, cria-a
+    if not os.path.exists(caminho_destino):
+        os.makedirs(caminho_destino)
+
+
     # Percorre os arquivos na pasta
     for arquivo in arquivos:
         if arquivo['mimeType'] == 'video/mp4':
@@ -25,7 +30,7 @@ def baixar_arquivos_mp4(id_pasta, caminho_destino):
 id_pasta_google_drive = "1ML6qZBQPoUZTrBWaEhx8kkAS_bz_3zhc"
 
 # Caminho de destino para salvar os arquivos MP4 baixados
-pasta_destino = "Videos_Local"
+pasta_destino = "DRAFT/Videos_Local"
 
 # Baixar todos os arquivos MP4 da pasta no Google Drive
 baixar_arquivos_mp4(id_pasta_google_drive, pasta_destino)

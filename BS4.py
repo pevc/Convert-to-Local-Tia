@@ -66,7 +66,7 @@ def convert_drive_videos(tag_video,file_path) :
     with open(file_path, 'w') as file:
         file.write(soup.pretiffy())
 
-pasta_destino = "Videos_Local"
+pasta_destino = "DRAFT/Videos_Local"
 def download_youtube_video_from_tag(tag_string, pasta_destino):
     # Encontra o link do YouTube na tag usando expressões regulares
     match = re.search(r'(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)', tag_string)
