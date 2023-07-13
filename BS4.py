@@ -16,14 +16,16 @@ def convert_point_local(file_tag):
 
     if match:
         nome_video = match.group(1)
-
+    
+    nome_video = nome_video.replace("mp4","webm")
+    print(nome_video)
     
     with open(point_local, 'r') as file:
         point_local_data = file.read()
     
     nome_arquivo = point_local
     # Usando expressão regular para substituir todos os nomes de vídeo com extensão .mp4 no arquivo
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.mp4(?=" type="video/mp4">)'
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
     novo_arquivo = re.sub(padrao, nome_video, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
@@ -34,7 +36,8 @@ def convert_point_local_youtube(video_downloaded) :
     with open(point_local, 'r') as file:
         point_local_data = file.read()
 
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.mp4(?=" type="video/mp4">)'
+    print(video_downloaded)
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
     novo_arquivo = re.sub(padrao, video_downloaded, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
@@ -93,7 +96,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
         video.streams.get_highest_resolution().download(output_path=pasta_destino, filename=f"{titulo}.mp4")
         #print("Download concluído.")
         if titulo != None :
-            return f"{titulo}.mp4"
+            return f"{titulo}.webm"
 
     except Exception as e:
         print("Erro ao fazer o download do vídeo:", str(e))
@@ -145,6 +148,6 @@ for file_name in os.listdir(folder_path):
                         point_local_data = file.read()
 
                     tag_video.div.parent.replace_with(BeautifulSoup(point_local_data, "html.parser").div)
-                    print(file_name)
+                    #print(file_name)
                     with open(file_path, 'w') as file:
                         file.write(soup.prettify())    
