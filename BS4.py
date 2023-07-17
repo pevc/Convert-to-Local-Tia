@@ -96,7 +96,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
         video.streams.get_highest_resolution().download(output_path=pasta_destino, filename=f"{titulo}.mp4")
         #print("Download concluído.")
         if titulo != None :
-            return f"{titulo}.webm"
+            return f"{titulo}.mp4"
 
     except Exception as e:
         print("Erro ao fazer o download do vídeo:", str(e))
