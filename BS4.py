@@ -17,7 +17,7 @@ def convert_point_local(file_tag):
     if match:
         nome_video = match.group(1)
     
-    nome_video = nome_video.replace("mp4","webm")
+    #nome_video = nome_video.replace("mp4","webm")
     print(nome_video)
     
     with open(point_local, 'r') as file:
@@ -25,7 +25,7 @@ def convert_point_local(file_tag):
     
     nome_arquivo = point_local
     # Usando expressão regular para substituir todos os nomes de vídeo com extensão .mp4 no arquivo
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.mp4(?=" type="video/mp4">)'
     novo_arquivo = re.sub(padrao, nome_video, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
@@ -37,7 +37,7 @@ def convert_point_local_youtube(video_downloaded) :
         point_local_data = file.read()
 
     print(video_downloaded)
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.mp4(?=" type="video/mp4">)'
     novo_arquivo = re.sub(padrao, video_downloaded, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
