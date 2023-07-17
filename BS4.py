@@ -17,7 +17,7 @@ def convert_point_local(file_tag):
     if match:
         nome_video = match.group(1)
     
-    nome_video = nome_video.replace("mp4","webm")
+    #nome_video = nome_video.replace("mp4","webm")
     print(nome_video)
     
     with open(point_local, 'r') as file:
@@ -25,7 +25,7 @@ def convert_point_local(file_tag):
     
     nome_arquivo = point_local
     # Usando expressão regular para substituir todos os nomes de vídeo com extensão .mp4 no arquivo
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/webm">)'
     novo_arquivo = re.sub(padrao, nome_video, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
@@ -36,8 +36,8 @@ def convert_point_local_youtube(video_downloaded) :
     with open(point_local, 'r') as file:
         point_local_data = file.read()
 
-    print(video_downloaded)
-    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/mp4">)'
+    print('Youtube download: '+video_downloaded)
+    padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/webm">)'
     novo_arquivo = re.sub(padrao, video_downloaded, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
@@ -58,7 +58,7 @@ def convert_drive_videos(tag_video,file_path) :
     with open(point_local, 'r') as file:
         point_local_data = file.read()
 
-    print(point_local_data)
+    print("Drive: "+point_local_data)
 
     #print(tag_video.prettify())
     #tag_video.div.parent.replace_with(str(point_local_data))
@@ -96,7 +96,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
         video.streams.get_highest_resolution().download(output_path=pasta_destino, filename=f"{titulo}.mp4")
         #print("Download concluído.")
         if titulo != None :
-            return f"{titulo}.webm"
+            return f"{titulo}.mp4"
 
     except Exception as e:
         print("Erro ao fazer o download do vídeo:", str(e))
@@ -129,7 +129,7 @@ for file_name in os.listdir(folder_path):
         for tag_video in tag_videos :
             tag_video_str = str(tag_video)
             if tag_video_str != "[]" and "drive" in tag_video_str :
-                print(file_name)
+                print("Video Drive a ser baixado: "+file_name)
                 convert_point_local(tag_video_str)
                 with open(point_local, 'r') as file:
                     point_local_data = file.read()
@@ -139,7 +139,7 @@ for file_name in os.listdir(folder_path):
                 with open(file_path, 'w') as file:
                     file.write(soup.prettify())
             if tag_video_str != "[]" and "youtube" in tag_video_str :
-                print(file_name)
+                print("Video youtube a ser baixado: "+file_name)
                 video_downloaded = convert_youtube_videos(tag_video,file_name)
 
                 if video_downloaded != None :
