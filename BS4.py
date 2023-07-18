@@ -118,7 +118,8 @@ for file_name in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file_name)
 
         # Abrir o arquivo HTML para leitura
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r',encoding='utf-8') as file:
+            print(file_path)
             file_data = file.read()
         
         soup = BeautifulSoup(file_data, "html.parser")
