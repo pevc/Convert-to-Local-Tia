@@ -18,9 +18,9 @@ def convert_point_local(file_tag):
         nome_video = match.group(1)
     
     #nome_video = nome_video.replace("mp4","webm")
-    print(nome_video)
+    print("Video baixado: "+nome_video)
     
-    with open(point_local, 'r') as file:
+    with open(point_local, 'r',encoding='utf-8') as file:
         point_local_data = file.read()
     
     nome_arquivo = point_local
@@ -29,20 +29,20 @@ def convert_point_local(file_tag):
     novo_arquivo = re.sub(padrao, nome_video, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
-    with open(point_local, 'w') as file:
+    with open(point_local, 'w',encoding='utf-8') as file:
         file.write(novo_arquivo)   
     
 def convert_point_local_youtube(video_downloaded) :
-    with open(point_local, 'r') as file:
+    with open(point_local, 'r',encoding='utf-8') as file:
         point_local_data = file.read()
 
-    print('Youtube download: '+video_downloaded)
+    print('Arquivo com youtube video: '+video_downloaded)
     padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/webm">)'
     novo_arquivo = re.sub(padrao, video_downloaded, point_local_data, count=0)
 
     # Salvar arquivo modificado como .html
     nome_arquivo = point_local
-    with open(point_local, 'w') as file:
+    with open(point_local, 'w',encoding='utf-8') as file:
         file.write(novo_arquivo)
 
 def convert_drive_videos(tag_video,file_path) :
@@ -55,7 +55,7 @@ def convert_drive_videos(tag_video,file_path) :
     #print(tag_video.prettify())
     convert_point_local(tag_video_str)
 
-    with open(point_local, 'r') as file:
+    with open(point_local, 'r',encoding='utf-8') as file:
         point_local_data = file.read()
 
     print("Drive: "+point_local_data)
@@ -66,7 +66,7 @@ def convert_drive_videos(tag_video,file_path) :
 
 
     # Salve o HTML modificado de volta no arquivo
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w',encoding='utf-8') as file:
         file.write(soup.pretiffy())
 
 pasta_destino = "DRAFT/Videos_Local"
@@ -84,7 +84,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
         # Obtém informações do vídeo, incluindo o título
         video = YouTube(youtube_url)
         titulo = video.title
-
+        titulo = re.sub(r'[^a-zA-Z0-9 ]', '', titulo)
         # Verifica se a pasta de destino existe, caso contrário, cria-a
         if not os.path.exists(pasta_destino):
             os.makedirs(pasta_destino)
@@ -99,7 +99,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
             return f"{titulo}.mp4"
 
     except Exception as e:
-        print("Erro ao fazer o download do vídeo:", str(e))
+        print("\nErro ao fazer o download do vídeo:\n", str(e))
 
 
 def convert_youtube_videos(tag_video,file_name) :
@@ -119,7 +119,7 @@ for file_name in os.listdir(folder_path):
 
         # Abrir o arquivo HTML para leitura
         with open(file_path, 'r',encoding='utf-8') as file:
-            print(file_path)
+            #print(file_path)
             file_data = file.read()
         
         soup = BeautifulSoup(file_data, "html.parser")
@@ -132,12 +132,12 @@ for file_name in os.listdir(folder_path):
             if tag_video_str != "[]" and "drive" in tag_video_str :
                 print("Video Drive a ser baixado: "+file_name)
                 convert_point_local(tag_video_str)
-                with open(point_local, 'r') as file:
+                with open(point_local, 'r',encoding='utf-8') as file:
                     point_local_data = file.read()
                 # Modifica o div da tag pelo div do pointlocal
                 tag_video.div.parent.replace_with(BeautifulSoup(point_local_data, "html.parser").div)
                 # Salva o HTML modificado de volta no arquivo
-                with open(file_path, 'w') as file:
+                with open(file_path, 'w',encoding='utf-8') as file:
                     file.write(soup.prettify())
             if tag_video_str != "[]" and "youtube" in tag_video_str :
                 print("Video youtube a ser baixado: "+file_name)
@@ -145,10 +145,10 @@ for file_name in os.listdir(folder_path):
 
                 if video_downloaded != None :
                     convert_point_local_youtube(video_downloaded)
-                    with open(point_local, 'r') as file:
+                    with open(point_local, 'r',encoding='utf-8') as file:
                         point_local_data = file.read()
 
                     tag_video.div.parent.replace_with(BeautifulSoup(point_local_data, "html.parser").div)
                     #print(file_name)
-                    with open(file_path, 'w') as file:
+                    with open(file_path, 'w',encoding='utf-8') as file:
                         file.write(soup.prettify())    
