@@ -36,7 +36,7 @@ def convert_point_local_youtube(video_downloaded) :
     with open(point_local, 'r',encoding='utf-8') as file:
         point_local_data = file.read()
 
-    print('Arquivo com youtube video: '+video_downloaded)
+    print('Youtube video baixado: '+video_downloaded)
     padrao = r'(?<=<source src="Videos_Local\\).*?\.webm(?=" type="video/webm">)'
     novo_arquivo = re.sub(padrao, video_downloaded, point_local_data, count=0)
 
@@ -140,7 +140,7 @@ for file_name in os.listdir(folder_path):
                 with open(file_path, 'w',encoding='utf-8') as file:
                     file.write(soup.prettify())
             if tag_video_str != "[]" and "youtube" in tag_video_str :
-                print("Video youtube a ser baixado: "+file_name)
+                print("Html com video youtube: "+file_name)
                 video_downloaded = convert_youtube_videos(tag_video,file_name)
 
                 if video_downloaded != None :
