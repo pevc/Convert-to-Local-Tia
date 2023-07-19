@@ -72,19 +72,24 @@ def convert_drive_videos(tag_video,file_path) :
 pasta_destino = "DRAFT/Videos_Local"
 def download_youtube_video_from_tag(tag_string, pasta_destino):
     # Encontra o link do YouTube na tag usando expressões regulares
+    
     match = re.search(r'(?:https?:\/\/)?(?:www\.)?youtube\.com\/embed\/([a-zA-Z0-9_-]+)', tag_string)
+    
     if not match:
         print("Nenhum link do YouTube encontrado na tag.")
         return
 
     youtube_id = match.group(1)
+    
     youtube_url = f"https://www.youtube.com/watch?v={youtube_id}"
 
     try:
+        
         # Obtém informações do vídeo, incluindo o título
         video = YouTube(youtube_url)
         titulo = video.title
         titulo = re.sub(r'[^a-zA-Z0-9 ]', '', titulo)
+        
         # Verifica se a pasta de destino existe, caso contrário, cria-a
         if not os.path.exists(pasta_destino):
             os.makedirs(pasta_destino)
@@ -92,6 +97,7 @@ def download_youtube_video_from_tag(tag_string, pasta_destino):
         # Define o caminho completo para o arquivo de destino
         caminho_arquivo = os.path.join(pasta_destino, f"{titulo}.mp4")
 
+        
         # Faz o download do vídeo usando a URL do YouTube
         video.streams.get_highest_resolution().download(output_path=pasta_destino, filename=f"{titulo}.mp4")
         #print("Download concluído.")
@@ -140,7 +146,7 @@ for file_name in os.listdir(folder_path):
                 with open(file_path, 'w',encoding='utf-8') as file:
                     file.write(soup.prettify())
             if tag_video_str != "[]" and "youtube" in tag_video_str :
-                print("Html com video youtube: "+file_name)
+                print("\nHtml com video youtube: "+file_name)
                 video_downloaded = convert_youtube_videos(tag_video,file_name)
 
                 if video_downloaded != None :
