@@ -35,8 +35,8 @@ for file_name in os.listdir(folder_path):
             
             href = link.get('href')
             if href and ".html" not in href:
-                print('Arquivos com link para drive: '+file_name)
-                print('Link: '+href+'\n')
+                print('\nArquivos com link para drive: '+file_name)
+                print('Link: '+href)
 
         for link in YouTube_links:
             source = link.get('source src')
