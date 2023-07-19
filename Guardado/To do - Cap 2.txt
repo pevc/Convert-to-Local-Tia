@@ -1,0 +1,33 @@
+
+Starting to program.html
+
+Codesys Download from Codesys Website
+https://store.codesys.com/codesys.html 
+
+Welcome.html
+
+https://support.industry.siemens.com/cs/document/109784440/simatic-step-7-incl-safety-s7-plcsim-and-wincc-v17-trial-download?dti=0&amp;lc=en-US</span
+
+<video class="YMEQtf" controls="" style="width: 100%;">
+                      <source src="Videos_Local\Very basic ladder instructions.mp4" type="video/webm"/>
+                     </video>
+
+    <object data="path_to_your_pdf_file.pdf" type="application/pdf" width="100%" height="500px">
+        <p>Alternative text for browsers that don't support PDF display.
+            <a href="path_to_your_pdf_file.pdf">Download the PDF</a>.</p>
+    </object>
+
+    <h1>Download File Example</h1>
+    <p>Click the link below to download the file:</p>
+    <a href="files/example.pdf" class="PDF_Download" download>Download example.pdf</a>
+
+XqQF9c
+PDF_Local/ElectricalDiagram_GarageGate.pdf
+	
+
+
+Download_Local/default_project.zap15_1
+
+                     <video class="YMEQtf" controls="" style="width: 100%;">
+                      <source src="Videos_Local\Very basic ladder instructions.mp4" type="video/webm"/>
+                     </video>
