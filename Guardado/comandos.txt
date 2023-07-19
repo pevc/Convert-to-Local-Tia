@@ -1,0 +1,4 @@
+Prettier:
+
+CD:
+prettier --write ./
