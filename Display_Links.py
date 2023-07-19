@@ -40,8 +40,8 @@ for file_name in os.listdir(folder_path):
 
         for link in YouTube_links:
             source = link.get('source src')
-            print('\nArquivos com link para drive: '+file_name)
-            print(link)
+            print('\nArquivos com mp4 para mudar: '+file_name)
+            #print(link)
 
 
 '''            if 'id=' in href:
