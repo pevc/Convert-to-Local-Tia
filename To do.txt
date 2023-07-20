@@ -6,36 +6,17 @@ Ajustar player
 
 Tasks with Codesys - Vazio?
 
+>Control concepts
 
-rquivos com link para drive: CODESYS - Standardization.html
+Ajustar player, video privado
+
+>Excitations 
+
+Background
+
+>Integration between TIA and VFA.html
+
+Ajeitar player, colocar link local
+
+Arquivos com link para drive: CODESYS - Standardization.html
 Link: https://drive.google.com/uc?export=download&confirm=h5M2&id=1Cu1QjE_9vhfRy1QUrHuYqr0OP1t1NcoZ
-
-Arquivos com link para drive: DUT.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.13.0/en/_cds_obj_dut/
-
-Arquivos com link para drive: DUT.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.13.0/en/_cds_datatype_structure/#b2e3e6da93f532b0c0a8640e011c7a1d-3s-structures
-
-Arquivos com link para drive: DUT.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.13.0/en/_cds_datatype_enum/#c02c7c93f57fccc0a8640e014fa9b7-3s-enumerations
-
-Arquivos com link para drive: DUT.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.13.0/en/_cds_datatype_union/#a6993f1cfb2c0a8640e01351589-3s-union
-
-Arquivos com link para drive: Integration between TIA and VFA.html
-Link: https://support.industry.siemens.com/cs/document/109740158/simatic-step-7-%28tia-portal%29-v14-trial-download?dti=0&lc=en-WW
-
-Arquivos com link para drive: POU.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.12.0/en/_cds_f_obj_pou/
-
-Arquivos com link para drive: POU.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.12.0/en/_cds_obj_program/#f8163f81a1ed20cc0a8640e00f7941f-id-bb7667b11a1ed20bc0a8640e01891056
-
-Arquivos com link para drive: POU.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.12.0/en/_cds_obj_function_block/#a70a3a130569cc4fc0a8640e01f8feef-id-349665400569cc4ec0a8640e016eae1a
-
-Arquivos com link para drive: POU.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.12.0/en/_cds_obj_function/#d8edec4a146076cec0a8640e0081effa-id-cd2a36b6146076cdc0a8640e00db9267
-
-Arquivos com link para drive: Task.html
-Link: https://help.codesys.com/api-content/2/codesys/3.5.13.0/en/_cds_f_task_configuration/
