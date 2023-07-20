@@ -1,5 +1,11 @@
 Control concepts.html - Youtube video privado
 
+>Process Control.html
+
+Ajustar player
+
+Tasks with Codesys - Vazio?
+
 
 rquivos com link para drive: CODESYS - Standardization.html
 Link: https://drive.google.com/uc?export=download&confirm=h5M2&id=1Cu1QjE_9vhfRy1QUrHuYqr0OP1t1NcoZ
