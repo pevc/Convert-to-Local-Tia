@@ -28,14 +28,14 @@ for file_name in os.listdir(folder_path):
         
         soup = BeautifulSoup(file_data, "html.parser")
 
-        drive_links = soup.find_all('a', href=lambda href: href)
+        external_links = soup.find_all('a', href=lambda href: href)
         YouTube_links = soup.find_all(filter_video_without_webm)
         
-        for link in drive_links:
+        for link in external_links:
             
             href = link.get('href')
             if href and ".html" not in href:
-                print('\nArquivos com link para drive: '+file_name)
+                print('\nArquivos com link externos: '+file_name)
                 print('Link: '+href)
 
         for link in YouTube_links:
